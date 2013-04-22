@@ -13,3 +13,7 @@ td {
 .today {
 	background-color: yellow;
 }
+
+.days_of_week th {
+	width: 5%;
+}

@@ -9,6 +9,7 @@ var CalendarBuilder = function(options) {
 
 	// hardcode data
 	this.options.month_array = options.month_array || ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+	this.options.days_array = options.days_array || ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 	// for monthly build
 	this.options.new_date = new Date(this.options.current_year, this.options.current_month);
@@ -62,6 +63,8 @@ CalendarBuilder.prototype.build_calendar_layout = function() {
 		i = 0,
 		j = 0;
 
+	thead.className = 'days_of_week';
+
 	this.options.table = table;
 	this.options.thead = thead;
 	this.options.tbody = tbody;
@@ -97,6 +100,7 @@ CalendarBuilder.prototype.build_calendar_layout = function() {
 	this.options.container.appendChild(frg);
 };
 
+// TODO make it better
 CalendarBuilder.prototype.fill_cells = function() {
 	var real_calendar_day = this.lib.get_real_day(this.options.new_date);
 
@@ -134,14 +138,14 @@ CalendarBuilder.prototype.highlight_control_days = function() {
 };
 
 CalendarBuilder.prototype.set_week_days = function() {
-	var tr = document.createElement('tr'),
-		th = document.createElement('th'),
-		i = 1;
-
-	this.options.thead.appendChild(tr);
+	var tr = this.options.thead.insertRow(-1),
+		th,
+		i = 0;
 
 	for ( ; i < this.calendar_cells; i += 1 ) {
-		tr.appendChild(document.createElement('th'));
+		th = document.createElement('th');
+		th.innerHTML = this.options.days_array[i];
+		tr.appendChild(th);
 	}
 };
 
