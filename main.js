@@ -1,13 +1,15 @@
 var CalendarBuilder = function(options) {
 	// main options
 	this.options = options;
+
+	// current date
 	this.options.current_date = new Date();
 	this.options.current_day = this.options.current_date.getDate();
 	this.options.current_day_of_week = this.options.current_date.getDay();
 	this.options.current_month = this.options.current_date.getMonth();
 	this.options.current_year = this.options.current_date.getFullYear();
 
-	// hardcode data
+	// hardcoded data
 	this.options.month_array = options.month_array || ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 	this.options.days_array = options.days_array || ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
@@ -100,7 +102,7 @@ CalendarBuilder.prototype.build_calendar_layout = function() {
 	this.options.container.appendChild(frg);
 };
 
-// TODO make it better
+// TODO make it more readable
 CalendarBuilder.prototype.fill_cells = function() {
 	var real_calendar_day = this.lib.get_real_day(this.options.new_date);
 
@@ -126,11 +128,11 @@ CalendarBuilder.prototype.set_month_label = function() {
 	this.options.caption.innerHTML = this.options.month_array[this.options.current_month];
 };
 
-CalendarBuilder.prototype.set_cell_html = function(index) {
+/*CalendarBuilder.prototype.set_cell_html = function(index) {
 	if ( this.options.new_date_day_of_week() === index ) {
 		this.options.last_day_of_month += 1;
 	}
-};
+};*/
 
 CalendarBuilder.prototype.highlight_control_days = function() {
 	this.options.first_day.className = 'first';

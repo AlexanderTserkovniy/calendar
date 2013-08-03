@@ -17,3 +17,8 @@ td {
 .days_of_week th {
 	width: 5%;
 }
+
+caption {
+	font-size: 250%;
+	color: red;
+}

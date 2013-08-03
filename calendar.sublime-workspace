@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"inse",
+				"insertRow"
+			],
+			[
 				"if",
 				"if	if condition"
 			],
@@ -510,10 +514,6 @@
 			[
 				"pa",
 				"parentNode"
-			],
-			[
-				"som",
-				"some_value"
 			]
 		]
 	},
@@ -531,7 +531,7 @@
 			"file": "main.js",
 			"settings":
 			{
-				"buffer_size": 4504,
+				"buffer_size": 4683,
 				"line_ending": "Windows"
 			}
 		},
@@ -539,7 +539,7 @@
 			"file": "style.css",
 			"settings":
 			{
-				"buffer_size": 185,
+				"buffer_size": 219,
 				"line_ending": "Windows"
 			}
 		}
@@ -728,6 +728,7 @@
 	},
 	"file_history":
 	[
+		"/D/DropBox/Dropbox/_JS/GitHub/calendar/calendar.sublime-project",
 		"/C/Users/Temp/AppData/Roaming/Mozilla/Firefox/Profiles/x6uq1nf8.default/itsalltext/ui61.maxymiser.com.1h2q302y20.txt",
 		"/C/Users/Temp/AppData/Roaming/Mozilla/Firefox/Profiles/x6uq1nf8.default/itsalltext/ui61.maxymiser.com.371f2b251b.txt",
 		"/D/DropBox/Dropbox/maxymiser_academy/lessons_plan/presentations/presentation_6/index.html",
@@ -854,8 +855,7 @@
 		"/C/Users/Temp/AppData/Roaming/Mozilla/Firefox/Profiles/x6uq1nf8.default/itsalltext/ui61.maxymiser.com.332t341w1j.txt",
 		"/C/Users/Temp/AppData/Roaming/Mozilla/Firefox/Profiles/x6uq1nf8.default/itsalltext/ui61.maxymiser.com.20302r3a1e.txt",
 		"/C/Users/Temp/AppData/Roaming/Mozilla/Firefox/Profiles/x6uq1nf8.default/itsalltext/ui61.maxymiser.com.1f1h2y3e3a.txt",
-		"/C/Users/Temp/AppData/Roaming/Mozilla/Firefox/Profiles/x6uq1nf8.default/itsalltext/ui61.maxymiser.com.33321j2x1l.txt",
-		"/C/Users/Temp/AppData/Roaming/Mozilla/Firefox/Profiles/x6uq1nf8.default/itsalltext/ui61.maxymiser.com.382f1y381k.txt"
+		"/C/Users/Temp/AppData/Roaming/Mozilla/Firefox/Profiles/x6uq1nf8.default/itsalltext/ui61.maxymiser.com.33321j2x1l.txt"
 	],
 	"find":
 	{
@@ -876,6 +876,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"set_cell_html",
 			"devel",
 			"devele",
 			"mm_email_input_elem",
@@ -1002,8 +1003,7 @@
 			".more-container .btn-primary:before",
 			"cons",
 			"console",
-			"cons",
-			"getCook"
+			"cons"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1040,7 +1040,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1055,8 +1055,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								172,
+								172
 							]
 						],
 						"settings":
@@ -1196,8 +1196,9 @@
 							{
 							},
 							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": false,
-							"sublimelinter_mark_style": "outline",
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
 							"sublimelinter_notes": false,
 							"sublimelinter_objj_check_ascii": false,
 							"sublimelinter_popup_errors_on_save": false,
@@ -1222,15 +1223,15 @@
 					"file": "main.js",
 					"settings":
 					{
-						"buffer_size": 4504,
+						"buffer_size": 4683,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1701,
+								1701
 							]
 						],
 						"settings":
@@ -1370,8 +1371,9 @@
 							{
 							},
 							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": false,
-							"sublimelinter_mark_style": "outline",
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
 							"sublimelinter_notes": false,
 							"sublimelinter_objj_check_ascii": false,
 							"sublimelinter_popup_errors_on_save": false,
@@ -1384,10 +1386,11 @@
 							"sublimelinter_wrap_find": true,
 							"synced": false,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 793.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1397,15 +1400,15 @@
 					"file": "style.css",
 					"settings":
 					{
-						"buffer_size": 185,
+						"buffer_size": 219,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								183,
-								183
+								215,
+								215
 							]
 						],
 						"settings":
@@ -1545,8 +1548,9 @@
 							{
 							},
 							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": false,
-							"sublimelinter_mark_style": "outline",
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
 							"sublimelinter_notes": false,
 							"sublimelinter_objj_check_ascii": false,
 							"sublimelinter_popup_errors_on_save": false,
