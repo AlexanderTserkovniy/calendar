@@ -22,3 +22,30 @@ caption {
 	font-size: 250%;
 	color: red;
 }
+
+caption a {
+	display: block;
+	font-size: 0;
+}
+
+caption .prev {
+	float: left;
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	border-right: 20px solid gray;
+}
+
+caption .prev:hover {
+	border-right: 20px solid #9A84AB;
+}
+
+caption .next {
+	float: right;
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	border-left: 20px solid gray;
+}
+
+caption .next:hover {
+	border-left: 20px solid #9A84AB;
+}

@@ -1,3 +1,5 @@
+'use strict';
+
 var CalendarBuilder = function(options) {
 	// main options
 	this.options = options;
@@ -151,15 +153,90 @@ CalendarBuilder.prototype.set_week_days = function() {
 	}
 };
 
+// TODO replace with inheritance
+// EXTERNAL OPTIONS
+CalendarBuilder.prototype.create_months_switcher = function() {
+	// Add important methods to the lib
+	CalendarBuilder.prototype.lib.bind = function(obj, event_name, handler) {
+		var handler_wrapper = function (event) {
+			event = event || window.event;
+			if (!event.target && event.srcElement) {
+				event.target = event.srcElement;
+			}
+			return handler.call(obj, event);
+		};
+
+		if (obj.addEventListener) {
+			obj.addEventListener(event_name, handler_wrapper, false);
+		} else if (obj.attachEvent) {
+			obj.attachEvent('on' + event_name, handler_wrapper);
+		}
+		return handler_wrapper;
+	};
+
+	CalendarBuilder.prototype.create_controls = function() {
+		var arrows = (function () {
+			var prev_arrow, next_arrow;
+
+			prev_arrow = document.createElement('a');
+			prev_arrow.href = '#';
+			prev_arrow.className = 'prev';
+			prev_arrow.innerHTML = 'prev';
+			prev_arrow.setAttribute('onclick', 'return false;');
+
+			next_arrow = document.createElement('a');
+			next_arrow.href = '#';
+			next_arrow.className = 'next';
+			next_arrow.innerHTML = 'next';
+			next_arrow.setAttribute('onclick', 'return false;');
+
+			return {
+				prev : prev_arrow,
+				next : next_arrow
+			};
+		})();
+
+		this.options.prev = arrows.prev;
+		this.options.next = arrows.next;
+		this.options.caption.appendChild(arrows.prev);
+		this.options.caption.appendChild(arrows.next);
+	};
+
+	CalendarBuilder.prototype.listen_controls = function() {
+		this.lib.bind(this.options.prev, 'click', function () {
+			console.log('Get prev month');
+		});
+
+		this.lib.bind(this.options.next, 'click', function () {
+			console.log('Get next month');
+		});
+	};
+
+	this.create_controls();
+	this.listen_controls();
+};
+
+CalendarBuilder.prototype.external = function() {
+	// can user switch months ?
+	this.options.can_switch && this.create_months_switcher();
+};
+
 CalendarBuilder.prototype.init = function() {
+	// basic tool for launch
 	this.create_help_lib();
 	this.build_calendar_layout();
 	this.fill_cells();
 	this.set_month_label();
 	this.highlight_control_days();
 	this.set_week_days();
+
+	// check out external options
+	this.external();
+
+	console.log(this, this.options);
 };
 
 var calendar = new CalendarBuilder({
-	container: document.getElementById('container')
+	container: document.getElementById('container'),
+	can_switch: true
 });
