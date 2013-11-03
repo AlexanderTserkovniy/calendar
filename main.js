@@ -142,7 +142,9 @@ CalendarBuilder.prototype.set_cell_html = function (index) {
 
 CalendarBuilder.prototype.highlight_control_days = function () {
 	this.options.first_day.className = 'first';
+	this.options.first_day.title = 'first day of month';
 	this.options.today.className = 'today';
+	this.options.today.title = 'this is today';
 };
 
 CalendarBuilder.prototype.set_week_days = function () {
@@ -157,6 +159,10 @@ CalendarBuilder.prototype.set_week_days = function () {
 	}
 };
 
+CalendarBuilder.prototype.rebuildWith = function (params) {
+	//TODO rebuild at the same place with another data
+};
+
 CalendarBuilder.prototype.init = function () {
 	this.create_help_lib();
 	this.build_calendar_layout();
@@ -167,10 +173,10 @@ CalendarBuilder.prototype.init = function () {
 };
 
 /*
-*
-* Calendar's controls constructor
-*
-* */
+ *
+ * Calendar's controls constructor
+ *
+ * */
 
 var CalendarControls = function (options) {
 	// store options
@@ -186,18 +192,73 @@ var CalendarControls = function (options) {
 	// create prev and next buttons
 	this.next = this.createControl('next', this.nextOptions);
 	this.prev = this.createControl('prev', this.prevOptions);
+
+	// append controls
+	this.containerToInsert.appendChild(this.next);
+	this.containerToInsert.appendChild(this.prev);
 };
 
-CalendarControls.prototype.createControl = function (options) {
+CalendarControls.prototype.createControl = function (side, options) {
 	var holder, element;
+
+	function _setPreventableState (event) {
+		event.preventDefault();
+	}
 
 	holder = document.createDocumentFragment();
 	element = document.createElement(options.elementType || 'a');
+
+	element.dataset.side = side;
+	element.className = options.className || side;
+	element.innerHTML = options.innerHTML || side;
+	element.href = options.href || '#';
+
+	// need to prevent ?
+	(options.isPreventable) ?
+		element.onclick = _setPreventableState :
+		null;
+
+	// add events
+	element.addEventListener('click', this.sideAction.bind(this));
+
+	holder.appendChild(element);
+
+	return holder;
+};
+
+CalendarControls.prototype.sideAction = function (event) {
+	var self, actions, dataSide;
+
+	self = this;
+	dataSide = event.target.dataset.side;
+	actions = {
+		'prev': function () {
+			self.options.calendar.rebuildWith({
+				'month': -1,
+				'year' : 0
+			});
+		},
+		'next': function () {
+			self.options.calendar.rebuildWith({
+				'month': +1,
+				'year' : 0
+			});
+		}
+	};
+
+	actions[dataSide] && actions[dataSide]();
 };
 
 var calendar = new CalendarBuilder({
 	container: document.getElementById('container')
 });
 var controls = new CalendarControls({
-	containerToInsert : calendar.container
+	calendar         : calendar,
+	containerToInsert: calendar.options.container,
+	nextOptions      : {
+		isPreventable: true
+	},
+	prevOptions      : {
+		isPreventable: true
+	}
 });
