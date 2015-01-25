@@ -172,6 +172,7 @@ CalendarBuilder.prototype.init = function () {
 	this.set_week_days();
 };
 
+
 /*
  *
  * Calendar's controls constructor
